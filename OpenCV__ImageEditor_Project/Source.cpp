@@ -1,4 +1,4 @@
-#include <opencv2/opencv.hpp>
+/*#include <opencv2/opencv.hpp>
 using namespace cv;
 
 int main( int argc, char** argv )
@@ -7,7 +7,7 @@ int main( int argc, char** argv )
  char* imageName = argv[1];
 
  Mat image;
- image = cv::imread("C:/Users/amand/Downloads/A2/MediaApp/AmandaDieuaide-TP2/HappyFish.jpg");
+ image = cv::imread("C:/Users/Amaury LC/Desktop/ISEP/Informatique/TP2/HappyFish.jpg");
  if( argc != 2 || !image.data )
  {
    printf( " No image data \n " );
@@ -22,8 +22,8 @@ int main( int argc, char** argv )
 
  cv::imshow("WindowName", image);
  cv::imshow("WindowNameGray", gray_image);
- cv::imwrite("C:/Users/amand/Downloads/A2/MediaApp/AmandaDieuaide-TP2/Gray_HappyFish.jpg", gray_image);
+ cv::imwrite("C:/Users/Amaury LC/Desktop/ISEP/Informatique/TP2/Gray_HappyFish.jpg", gray_image);
  waitKey(0);
 
  return 0;
-}
+}*/
