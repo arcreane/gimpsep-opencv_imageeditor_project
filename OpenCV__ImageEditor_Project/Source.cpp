@@ -1,3 +1,4 @@
+/*
 #include <opencv2/opencv.hpp>
 using namespace cv;
 
@@ -6,8 +7,6 @@ int main( int argc, char** argv )
 	//Adri commit test :D
  char* imageName = argv[1];
 
- Mat image;
- image = cv::imread("C:/Users/amand/Downloads/A2/MediaApp/AmandaDieuaide-TP2/HappyFish.jpg");
  if( argc != 2 || !image.data )
  {
    printf( " No image data \n " );
@@ -27,3 +26,5 @@ int main( int argc, char** argv )
 
  return 0;
 }
+
+*/
