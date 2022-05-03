@@ -7,8 +7,11 @@ int main(void)
 {
 	Mat source, scale;
 
-	// Read source image
-	source = imread("C:/Users/Amaury LC/Desktop/ISEP/Informatique/TP2/van_gogh.jpg");
+	// Input and read source image
+	string path;
+	cout << "Enter image path ";
+	cin >> path;
+	source = imread(path);
 
 	//User input scaling factors
 	
