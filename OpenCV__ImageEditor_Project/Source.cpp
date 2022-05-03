@@ -3,6 +3,7 @@ using namespace cv;
 
 int main( int argc, char** argv )
 {
+	//Amanda commit test :D
  char* imageName = argv[1];
 
  Mat image;
