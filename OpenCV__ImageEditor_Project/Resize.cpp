@@ -33,5 +33,5 @@ int main(void)
 	cv::imshow("WindowName2", scale);
 
 	waitKey(0);
-
+	
 }
