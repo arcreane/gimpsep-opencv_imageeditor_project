@@ -7,8 +7,7 @@ using std::cout;
 using std::endl;
 using namespace cv;
 
-/*
-int main(int argc, char** argv)
+int light_dark(int argc, char** argv)
 {
     CommandLineParser parser(argc, argv, "{@input | lena.jpg | input image}");
     Mat image = imread(samples::findFile(parser.get<String>("@input")));
@@ -38,4 +37,3 @@ int main(int argc, char** argv)
     waitKey();
     return 0;
 }
-*/

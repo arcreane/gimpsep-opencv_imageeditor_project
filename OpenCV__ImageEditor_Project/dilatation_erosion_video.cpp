@@ -4,7 +4,7 @@
 using namespace cv;
 using namespace std;
 
-int main(int argc, char** argv)
+int dilate_erode_vid(int argc, char** argv)
 {
     //open the video file for reading
     VideoCapture cap("C:/Users/amand/Downloads/A2/MediaApp/AmandaDieuaide-TP3/chaplin.mp4");

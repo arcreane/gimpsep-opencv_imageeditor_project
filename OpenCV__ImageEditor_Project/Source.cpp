@@ -1,30 +1,41 @@
 #include <opencv2/opencv.hpp>
+#include "Functions_menu.h"
+using namespace std;
 using namespace cv;
-/*
-int main( int argc, char** argv )
+
+int main(int argc, char** argv)
 {
-	//Amaury    commit test :D
- char* imageName = argv[1];
+    int menu;
+    do
+    {
+        cout << endl << " ----------------------- MENU -----------------------" << endl << endl;
+        cout << "1. Dilate/Erode Image" << endl;
+        cout << "2. Dilate/Erode Video" << endl;
+        cout << "3. Lighten/Darken Image" << endl;
+        cout << "4. Lighten/Darken Video" << endl;
+        cout << "0. Exit" << endl << endl;
+        cout << "Choix : ";
+        cin >> menu;
+        cout << endl;
 
- Mat image;
- image = cv::imread("C:/Users/amand/Downloads/A2/MediaApp/AmandaDieuaide-TP2/HappyFish.jpg");
- if( argc != 2 || !image.data )
- {
-   printf( " No image data \n " );
-   return -1;
- }
- Mat gray_image;
+        switch (menu)
+        {
+        case 0: break;
 
- cvtColor(image, gray_image, COLOR_BGR2GRAY);
+        case 1: dilate_erode(argc, argv);
+            break;
 
- namedWindow("WindowName");
- namedWindow("WindowNameGray");
+        case 2: dilate_erode_vid(argc, argv);
+            break;
 
- cv::imshow("WindowName", image);
- cv::imshow("WindowNameGray", gray_image);
- cv::imwrite("C:/Users/amand/Downloads/A2/MediaApp/AmandaDieuaide-TP2/Gray_HappyFish.jpg", gray_image);
- waitKey(0);
+        case 3: light_dark(argc, argv);
+            break;
+
+        case 4: light_dark_vid(argc, argv);
+            break;
+        }
+
+    } while (menu != 0);
 
  return 0;
 }
-*/

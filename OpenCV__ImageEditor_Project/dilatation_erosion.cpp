@@ -13,8 +13,8 @@ int const max_kernel_size = 21;
 void Erosion(int, void*);
 void Dilation(int, void*);
 
-/*
-int main(int argc, char** argv)
+
+int dilate_erode(int argc, char** argv)
 {
     CommandLineParser parser(argc, argv, "{@input | LinuxLogo.jpg | input image}");
     src = imread(samples::findFile(parser.get<String>("@input")));
@@ -69,4 +69,4 @@ void Dilation(int, void*)
     dilate(src, dilation_dst, element);
     imshow("Dilation Demo", dilation_dst);
 }
-*/
+
