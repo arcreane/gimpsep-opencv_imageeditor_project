@@ -22,7 +22,7 @@ int main(void)
 	cout << "Enter scaling factor Y ";
 	cin >> scaleY;
 
-	// Scaling down the image
+	// Scaling the image
 	resize(source, scale, Size(), scaleX, scaleY, INTER_LINEAR);
 
 	//Display windows and show images
