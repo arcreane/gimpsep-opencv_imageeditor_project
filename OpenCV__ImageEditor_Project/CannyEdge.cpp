@@ -2,7 +2,6 @@
 #include "opencv2/highgui.hpp"
 #include <iostream>
 
-// Push test Amaury
 using namespace cv;
 
 Mat src, src_gray;
