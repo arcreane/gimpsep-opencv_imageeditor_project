@@ -2,7 +2,8 @@
 #include "opencv2/highgui.hpp"
 #include <iostream>
 
-using namespace cv
+// Push test Amaury
+using namespace cv;
 
 Mat src, src_gray;
 Mat dst, detected_edges;
@@ -20,7 +21,7 @@ static void CannyThreshold(int, void*)
     dst = Scalar::all(0);
     src.copyTo(dst, detected_edges);
     imshow(window_name, dst);
-}*
+};
 
 int main(int argc, char** argv)
 {
