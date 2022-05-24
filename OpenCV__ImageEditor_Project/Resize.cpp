@@ -1,9 +1,9 @@
-/*#include <opencv2/opencv.hpp>
+#include <opencv2/opencv.hpp>
 
 using namespace std;
 using namespace cv;
 
-int main(void)
+int resize_image(void)
 {
 	Mat source, scale;
 
@@ -33,5 +33,5 @@ int main(void)
 	cv::imshow("WindowName2", scale);
 
 	waitKey(0);
-	
-}*/
+	return 0;
+}

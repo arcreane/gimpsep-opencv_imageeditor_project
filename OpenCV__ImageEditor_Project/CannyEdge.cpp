@@ -5,7 +5,7 @@
 using namespace cv;
 using namespace std;
 
-Mat src, src_gray;
+Mat src_canny, src_gray;
 Mat dst, detected_edges;
 
 int threshhold = 0;
@@ -20,21 +20,19 @@ static void CannyThreshold(int, void*)
     blur(src_gray, detected_edges, Size(3, 3));
     Canny(detected_edges, detected_edges, threshhold, threshhold * treshRatio, kernel);
     dst = Scalar::all(0);
-    src.copyTo(dst, detected_edges);
+    src_canny.copyTo(dst, detected_edges);
     imshow(window_name, dst);
 };
 
-int main(int argc, char** argv)
+int canny_edge(int argc, char** argv)
 {
-    CommandLineParser parser(argc, argv, "{@input | C:/Users/HappyFish.jpg | input image}");
-    //src = imread(samples::findFile(parser.get<String>("@input")), IMREAD_COLOR);
     string path;
     cout << "Enter image path " << endl;
     cin >> path;
-    src = imread(path, IMREAD_COLOR);
+    src_canny = imread(path, IMREAD_COLOR);
 
-    dst.create(src.size(), src.type());
-    cvtColor(src, src_gray, COLOR_BGR2GRAY);
+    dst.create(src_canny.size(), src_canny.type());
+    cvtColor(src_canny, src_gray, COLOR_BGR2GRAY);
     namedWindow(window_name, WINDOW_AUTOSIZE);
     createTrackbar("Min Threshold:", window_name, &threshhold, maxThreshold, CannyThreshold);
     CannyThreshold(0, 0);
