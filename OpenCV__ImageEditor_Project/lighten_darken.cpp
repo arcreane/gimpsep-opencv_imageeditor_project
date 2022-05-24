@@ -6,11 +6,19 @@ using std::cin;
 using std::cout;
 using std::endl;
 using namespace cv;
+using namespace std;
 
 int light_dark(int argc, char** argv)
 {
-    CommandLineParser parser(argc, argv, "{@input | lena.jpg | input image}");
-    Mat image = imread(samples::findFile(parser.get<String>("@input")));
+    //CommandLineParser parser(argc, argv, "{@input | lena.jpg | input image}");
+    //Mat image = imread(samples::findFile(parser.get<String>("@input")));
+
+    // Input and read source image 
+    string path;
+    cout << "Enter image path" << endl;
+    cin >> path;
+    Mat image = imread(path);
+
     if (image.empty())
     {
         cout << "Could not open or find the image!\n" << endl;

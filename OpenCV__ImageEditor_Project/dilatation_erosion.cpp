@@ -16,9 +16,16 @@ void Dilation(int, void*);
 
 int dilate_erode(int argc, char** argv)
 {
-    CommandLineParser parser(argc, argv, "{@input | LinuxLogo.jpg | input image}");
-    src = imread(samples::findFile(parser.get<String>("@input")));
+    //CommandLineParser parser(argc, argv, "{@input | LinuxLogo.jpg | input image}");
+    //src = imread(samples::findFile(parser.get<String>("@input")));
     //src = imread("C:/Users/amand/Downloads/A2/MediaApp/AmandaDieuaide-TP2/HappyFish.jpg");
+
+    // Input and read source image 
+    string path;
+    cout << "Enter image path" << endl;
+    cin >> path;
+    src = imread(path);
+
     if (src.empty())
     {
         cout << "Could not open or find the image!\n" << endl;

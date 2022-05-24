@@ -6,8 +6,15 @@ using namespace std;
 
 int dilate_erode_vid(int argc, char** argv)
 {
+
+    // Input and read source video 
+    string path;
+    cout << "Enter video path" << endl;
+    cin >> path;
+
     //open the video file for reading
-    VideoCapture cap("C:/Users/amand/Downloads/A2/MediaApp/AmandaDieuaide-TP3/chaplin.mp4");
+    //VideoCapture cap("C:/Users/amand/Downloads/A2/MediaApp/AmandaDieuaide-TP3/chaplin.mp4");
+    VideoCapture cap(path);
 
     // if not success, exit program
     if (!cap.isOpened()) {
