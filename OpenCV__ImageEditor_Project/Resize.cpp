@@ -9,7 +9,7 @@ int main(void)
 
 	// Input and read source image
 	string path;
-	cout << "Enter image path ";
+	cout << "Enter image path " << endl;
 	cin >> path;
 	source = imread(path);
 
