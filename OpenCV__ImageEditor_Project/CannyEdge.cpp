@@ -9,8 +9,8 @@ Mat src_canny, src_gray;
 Mat dst, detected_edges;
 
 int threshhold = 0;
-const int maxThreshold = 300;
-const int treshRatio = 3;
+const int maxThreshold = 100;
+const int treshRatio = 10;
 const int kernel = 3;
 const char* window_name = "Canny edges";
 

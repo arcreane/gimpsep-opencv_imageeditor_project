@@ -14,7 +14,6 @@ int resize_image(void)
 	source = imread(path);
 
 	//User input scaling factors
-	
 	double scaleX;
 	double scaleY;
 	cout << "Enter scaling factor X ";

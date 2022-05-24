@@ -145,9 +145,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CannyEdge.cpp" />
-    <ClCompile Include="dilatation_erosion.cpp" />
+    <ClCompile Include="dilatation_erosion_refonte.cpp" />
     <ClCompile Include="dilatation_erosion_video.cpp" />
-    <ClCompile Include="lighten_darken.cpp" />
+    <ClCompile Include="lighten_darken_refonte.cpp" />
     <ClCompile Include="lighten_darken_video.cpp" />
     <ClCompile Include="Resize.cpp" />
     <ClCompile Include="Source.cpp" />
