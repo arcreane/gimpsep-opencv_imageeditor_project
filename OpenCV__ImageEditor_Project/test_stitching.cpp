@@ -7,40 +7,29 @@ using namespace std;
 using namespace cv;
 
 // Global variables.
-int height;
-int width;
 double minval, maxval;
 Point minloc, maxloc;
-Rect roi;
-Mat res;
+Rect rect;
+Mat result;
 
 // Create function that finds point where overlap between two images starts. 
 // Images "left_img" and "right_img" are passed in by find_overlaps function.
 Point find_overlap_start(Mat left_img, Mat right_img)
 {
+    // Copy left image to new variable.
+    Mat img = left_img;
 
-    // Check if the sizes of images are the same.
-    if (left_img.size() == right_img.size())
-    {
-        // Get rows columns of left image.
-        height = left_img.rows;
-        width = left_img.cols;
+    // Create matrix to be used as our "template". 
+    rect.width = (img.size().width) / 10;
+    rect.height = img.size().height;
+    Mat templ = right_img(rect);
 
-        // Copy left image to new variable.
-        Mat haystack = left_img;
+    // Apply template matching and store result.
+    matchTemplate(img, templ, result, TM_CCORR_NORMED);
+    minMaxLoc(result, &minval, &maxval, &minloc, &maxloc);
 
-        // Create matrix "neddle" to be used as our "template". 
-        roi.width = (left_img.size().width) / 2;
-        roi.height = left_img.size().height;
-        Mat needle = right_img(roi);
-
-        // Apply template matching and store result in res.
-        matchTemplate(haystack, needle, res, TM_CCORR_NORMED);
-        minMaxLoc(res, &minval, &maxval, &minloc, &maxloc);
-
-        // Return top-left coordinate where the matching starts.
-        return maxloc;
-    }
+    // Return top-left coordinate where the matching starts.
+    return maxloc;
 }
 
 // Create vector of points where images start to overlap.
@@ -72,30 +61,26 @@ Mat stitch_images(vector<Mat> images, vector<Point> overlap_starts)
     // Loop trought vector of overlaped points and calculate total_width.
     for (int i = 0; i < images.size() - 1; i++)
     {
-        // overlap_starts[i, 0].x -> x coordinates of Point in overlap_starts vector.
-        total_width += overlap_starts[i, 0].x;
+        // Take the x coordinates of Point in overlap_starts vector.
+        total_width += overlap_starts[i].x;
 
     }
 
     // Now add width of image to the total width.
-    int img_width = images[0].cols;
+    int img_width = images[images.size() - 1].cols;
     total_width = total_width + img_width;  
 
     // Create matrix that is of the size ( height, total_width -> depends on the number of images).
-    Mat result = Mat::zeros(Size(total_width, height), CV_8UC1);
-    
+    Mat result = Mat::zeros(Size(total_width, images[1].rows), images[0].type());
+   
     // Put images next to each other on the result matrix.
     int current_column = 0;
     for (int i = 0; i < images.size(); i++)
     {
-        std::cout << "test" << std::endl;
-        std::cout << "row: " << result.rowRange(0, 400) << std::endl;
-
-        // Where to copy current image?
-        images[i].copyTo(result.rowRange(0, 400).colRange(current_column, (current_column + 600)));
+        images[i].copyTo(result.rowRange(0, result.rows).colRange(current_column, (current_column + images[i].cols)));
 
         // The next image should be moved right for:
-        current_column += overlap_starts[i, 0].x;
+        if (i != images.size() - 1) current_column += overlap_starts[i].x;
     }
 
     // Display composite image.
@@ -108,25 +93,36 @@ Mat stitch_images(vector<Mat> images, vector<Point> overlap_starts)
 
 int main(int argc, char* argv[])
 {
-    // Load images from HD.
-    Mat img1 = imread("C:/Users/adria/Documents/ISEP/A2/Dev/TP/TP2/van_gogh1.jpg");
-    Mat img2 = imread("C:/Users/adria/Documents/ISEP/A2/Dev/TP/TP2/van_gogh2.jpg");
+    // Ask the user how many images to switch
+    int number_img;
+    cout << "How many images do you want to stitch? " << endl;
+    cin >> number_img;
 
     // Create vector of images.
+    string path;
     vector<Mat> various_images;
-    various_images.push_back(img1);
-    various_images.push_back(img2);
+    for (int i = 0; i < number_img; i++) 
+    {
+        // Load the image
+        cout << "Enter image path " << endl;
+        cin >> path;
+        Mat img = imread(path);
 
-    // Display loaded images if you want.
-    namedWindow("img1", WINDOW_AUTOSIZE);
-    imshow("img1", img1);
-    namedWindow("img2", WINDOW_AUTOSIZE);
-    imshow("img2", img2);
+        // Store the image in the vector
+        various_images.push_back(img);
+    }
 
-    // Call function find_overlaps ( find top-left points of overlaping).
+    // Display loaded images.
+    for (int i = 0; i < number_img; i++) 
+    {
+        namedWindow("img " + std::to_string(i +1), WINDOW_AUTOSIZE);
+        imshow("img " + std::to_string(i + 1), various_images[i]);
+    }
+
+    // Find top-left points of overlaping.
     vector<Point> overlap_starts = find_overlaps(various_images);
     
-    // Call stitch_function and stitch images together.
+    // Stitch images together.
     stitch_images(various_images, overlap_starts);
     
     waitKey(0);
