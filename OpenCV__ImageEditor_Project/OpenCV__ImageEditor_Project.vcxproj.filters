@@ -15,7 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
+    <ClCompile Include="Resize.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CannyEdge.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="dilatation_erosion.cpp">

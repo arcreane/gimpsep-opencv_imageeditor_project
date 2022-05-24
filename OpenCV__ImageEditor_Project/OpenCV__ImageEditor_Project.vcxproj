@@ -144,10 +144,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="dilatation_erosion.cpp" />
-    <ClCompile Include="dilatation_erosion_video.cpp" />
-    <ClCompile Include="lighten_darken.cpp" />
-    <ClCompile Include="lighten_darken_video.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
