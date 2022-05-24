@@ -15,6 +15,7 @@ int main(int argc, char** argv)
         cout << "4. Lighten/Darken Video" << endl;
         cout << "5. Canny edge" << endl;
         cout << "6. Resize Image" << endl;
+        cout << "7. Stitching Images" << endl;
         cout << "0. Exit" << endl << endl;
         cout << "Choix : ";
         cin >> menu;
@@ -38,6 +39,8 @@ int main(int argc, char** argv)
         case 5: canny_edge(argc, argv);
             break;
         case 6: resize_image();
+            break;
+        case 7: stitching(argc, argv);
             break;
         }
 

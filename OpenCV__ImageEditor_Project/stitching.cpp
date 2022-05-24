@@ -91,7 +91,7 @@ Mat stitch_images(vector<Mat> images, vector<Point> overlap_starts)
 }
 
 
-int main(int argc, char* argv[])
+int stitching(int argc, char* argv[])
 {
     // Ask the user how many images to switch
     int number_img;

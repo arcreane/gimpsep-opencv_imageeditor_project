@@ -15,13 +15,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stitching.cpp">
+    <ClCompile Include="Source.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="CannyEdge.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="dilatation_erosion_refonte.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
     <ClCompile Include="dilatation_erosion_video.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="lighten_darken_refonte.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="lighten_darken_video.cpp">
@@ -30,10 +36,7 @@
     <ClCompile Include="Resize.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="dilatation_erosion_refonte.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="lighten_darken_refonte.cpp">
+    <ClCompile Include="stitching.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
