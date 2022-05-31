@@ -1,6 +1,8 @@
 #include "opencv2/imgproc.hpp"
 #include "opencv2/highgui.hpp"
 #include <iostream>
+
+// We initialize the variables
 using namespace cv;
 using namespace std;
 Mat src, erosion_dst, dilation_dst;
@@ -10,8 +12,7 @@ int const max_kernel_size = 21;
 void Erosion(int, void*);
 void Dilation(int, void*);
 
-// Input image, Erosion/Dilatation size, Choice between Erode/Dilate
-
+// The user selects which function he wants to use
 int dilate_erode(int argc, char** argv)
 {
     // src = imread("C:/Users/amand/Downloads/A2/MediaApp/AmandaDieuaide-TP2/HappyFish.jpg");
@@ -22,9 +23,11 @@ int dilate_erode(int argc, char** argv)
     cin >> path;
     src = imread(path);
 
+    // Function selection
     int menu;
     if (src.empty())
     {
+        // If the program can't find the image, we display an error
         cout << "Could not open or find the image!\n" << endl;
         cout << "Usage: " << argv[0] << " <Input image>" << endl;
         return -1;
@@ -32,6 +35,7 @@ int dilate_erode(int argc, char** argv)
 
     do
     {
+        // Otherwise, we ask the user to select a function by entering the corresponding number in the console
         cout << "1. Erode Image" << endl;
         cout << "2. Dilate Image" << endl;
         cout << "0. Go back to Main Menu" << endl << endl;
@@ -39,6 +43,7 @@ int dilate_erode(int argc, char** argv)
         cin >> menu;
         cout << endl;
 
+        // We create the window corresponding to the right function, the trackbar, and we call the right function
         switch (menu)
         {
         case 0: break;
@@ -66,21 +71,30 @@ int dilate_erode(int argc, char** argv)
    
     return 0;
 }
+
+// We create a structuring element and we erode the image with it
 void Erosion(int, void*)
 {
+    // It reads also the value of the trackbar
     Mat element = getStructuringElement(MORPH_ELLIPSE,
         Size(2 * erosion_size + 1, 2 * erosion_size + 1),
         Point(erosion_size, erosion_size));
     erode(src, erosion_dst, element);
+    
+    // We display the image
     imshow("Erosion Demo", erosion_dst);
 }
 
+// We create a structuring element and we dilate the image with it
 void Dilation(int, void*)
 {
+    // It reads also the value of the trackbar
     Mat element = getStructuringElement(MORPH_ELLIPSE,
         Size(2 * dilation_size + 1, 2 * dilation_size + 1),
         Point(dilation_size, dilation_size));
     dilate(src, dilation_dst, element);
+
+    // We display the image
     imshow("Dilation Demo", dilation_dst);
 }
 

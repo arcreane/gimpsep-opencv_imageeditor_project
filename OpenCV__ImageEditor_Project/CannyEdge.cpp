@@ -5,9 +5,11 @@
 using namespace cv;
 using namespace std;
 
+// We define the variables
 Mat src_canny, src_gray;
 Mat dst, detected_edges;
 
+// We have to initialize the parameters
 int threshhold = 0;
 const int maxThreshold = 100;
 const int treshRatio = 10;
