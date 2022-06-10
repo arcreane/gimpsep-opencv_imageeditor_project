@@ -2,6 +2,7 @@
 #include <fstream>
 #include "opencv2/highgui/highgui.hpp"
 #include <opencv2/stitching.hpp>
+#include "Save.h"
 
 using namespace std;
 using namespace cv;
@@ -123,8 +124,8 @@ int stitching(int argc, char* argv[])
     vector<Point> overlap_starts = find_overlaps(various_images);
     
     // Stitch images together.
-    stitch_images(various_images, overlap_starts);
+    Mat output = stitch_images(various_images, overlap_starts);
     
-    waitKey(0);
+    Save(output, path + "Stitched");
     return 0;
 }

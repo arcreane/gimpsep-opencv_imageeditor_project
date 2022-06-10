@@ -1,12 +1,13 @@
 #include "opencv2/imgcodecs.hpp"
 #include "opencv2/highgui.hpp"
 #include <iostream>
+#include "Save.h"
 
 using namespace cv;
 using namespace std;
 
 // We initialize the variables
-Mat image;
+Mat image, new_image;
 double alpha = 1.0;
 int alpha_treshold = 10;
 int beta = 0;
@@ -15,8 +16,6 @@ void Contrast(int, void*);
 // Input image, Light/Dark factor
 int light_dark(int argc, char** argv)
 {
-    // image = imread("C:/Users/amand/Downloads/A2/MediaApp/AmandaDieuaide-TP2/HappyFish.jpg");
-
     // Input and read source image 
     string path;
     cout << "Enter image path" << endl;
@@ -44,7 +43,7 @@ int light_dark(int argc, char** argv)
 
         // We call the function
         Contrast(0, 0);
-        waitKey(0);
+        Save(new_image, path + "Contrast");
     }
 
     return 0;
@@ -53,7 +52,7 @@ int light_dark(int argc, char** argv)
 void Contrast(int, void*)
 {
     // We create a new image 
-    Mat new_image = Mat::zeros(image.size(), image.type());
+    new_image = Mat::zeros(image.size(), image.type());
     alpha = (double) alpha_treshold / 10;
 
     // We store in the new image the ancient image to which the parameters have been applied

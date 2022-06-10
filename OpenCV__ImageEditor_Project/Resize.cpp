@@ -1,4 +1,5 @@
 #include <opencv2/opencv.hpp>
+#include "Save.h"
 
 using namespace std;
 using namespace cv;
@@ -25,12 +26,12 @@ int resize_image(void)
 	resize(source, scale, Size(), scaleX, scaleY, INTER_LINEAR);
 
 	//Display windows and show images
-	namedWindow("WindowName");
-	namedWindow("WindowName2");
+	namedWindow("Original");
+	namedWindow("Resized");
 
-	cv::imshow("WindowName", source);
-	cv::imshow("WindowName2", scale);
+	cv::imshow("Original", source);
+	cv::imshow("Resized", scale);
 
-	waitKey(0);
+	Save(scale, path + "Resize");
 	return 0;
 }

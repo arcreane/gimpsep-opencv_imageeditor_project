@@ -1,6 +1,7 @@
 #include "opencv2/imgproc.hpp"
 #include "opencv2/highgui.hpp"
 #include <iostream>
+#include "Save.h"
 
 using namespace cv;
 using namespace std;
@@ -8,6 +9,7 @@ using namespace std;
 // We define the variables used in the code
 Mat src_canny, src_gray;
 Mat dst, detected_edges;
+string pathCanny;
 
 // We initialize the parameters of the thresholds and the kernel for the canny edge
 int threshhold = 0;
@@ -29,16 +31,15 @@ static void CannyThreshold(int, void*)
 int canny_edge(int argc, char** argv)
 {
     // We load the source image by its path in the computer
-    string path;
     cout << "Enter image path " << endl;
-    cin >> path;
-    src_canny = imread(path, IMREAD_COLOR);
+    cin >> pathCanny;
+    src_canny = imread(pathCanny, IMREAD_COLOR);
 
     dst.create(src_canny.size(), src_canny.type()); // We create a matrix of src_canny's type and size
     cvtColor(src_canny, src_gray, COLOR_BGR2GRAY); // We convert the image to grayscale to detect the edges more easily
     namedWindow(window_name, WINDOW_AUTOSIZE); // We create a window to display the results
     createTrackbar("Min Threshold:", window_name, &threshhold, maxThreshold, CannyThreshold); // We create a trackbar to modify the canny edge precision
     CannyThreshold(0, 0);
-    waitKey(0);
+    Save(dst, pathCanny + "Canny");
     return 0;
 }

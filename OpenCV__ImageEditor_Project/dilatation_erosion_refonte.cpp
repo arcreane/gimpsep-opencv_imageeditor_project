@@ -1,6 +1,7 @@
 #include "opencv2/imgproc.hpp"
 #include "opencv2/highgui.hpp"
 #include <iostream>
+#include "Save.h"
 
 // We initialize the variables
 using namespace cv;
@@ -9,16 +10,14 @@ Mat src, erosion_dst, dilation_dst;
 int erosion_size = 0;
 int dilation_size = 0;
 int const max_kernel_size = 21;
+string path;
 void Erosion(int, void*);
 void Dilation(int, void*);
 
 // The user selects which function he wants to use
 int dilate_erode(int argc, char** argv)
 {
-    // src = imread("C:/Users/amand/Downloads/A2/MediaApp/AmandaDieuaide-TP2/HappyFish.jpg");
-
     // Input and read source image 
-    string path;
     cout << "Enter image path" << endl;
     cin >> path;
     src = imread(path);
@@ -54,7 +53,7 @@ int dilate_erode(int argc, char** argv)
                 &erosion_size, max_kernel_size,
                 Erosion);
             Erosion(0, 0);
-            waitKey(0);
+            Save(erosion_dst, path + "Eroded");
             break;
 
         case 2: 
@@ -63,7 +62,7 @@ int dilate_erode(int argc, char** argv)
                 &dilation_size, max_kernel_size,
                 Dilation);
             Dilation(0, 0);
-            waitKey(0);
+            Save(dilation_dst, path + "Dilated");
             break;
         }
 
@@ -82,7 +81,7 @@ void Erosion(int, void*)
     erode(src, erosion_dst, element);
     
     // We display the image
-    imshow("Erosion Demo", erosion_dst);
+    imshow("Erosion Demo", erosion_dst);        
 }
 
 // We create a structuring element and we dilate the image with it
