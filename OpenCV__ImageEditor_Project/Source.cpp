@@ -56,13 +56,11 @@ int Save(Mat newImage, string pathFunc) {
 	// Choice between saving the image or going back
 	cout << "Press 's' to save image, or 'esc' to go back" << endl;
 	int key = waitKey(0);
-	if (key == 27) {
-		destroyAllWindows();
-	}
 	if (key == 115) {
 		imwrite(pathFunc + "_Edit.png", newImage);
 		cout << "saved" << endl;
 		destroyAllWindows();
 	}
+	destroyAllWindows();
 	return 0;
 }
