@@ -12,7 +12,6 @@ int light_dark_vid(int argc, char** argv)
     cin >> path;
 
     // Open the video file for reading
-    // VideoCapture cap("C:/Users/amand/Downloads/A2/MediaApp/AmandaDieuaide-TP3/chaplin.mp4");
     VideoCapture cap(path);
 
     // If not success, exit program
@@ -63,7 +62,8 @@ int light_dark_vid(int argc, char** argv)
         // If any key is not pressed withing 10 ms, continue the loop
         if (waitKey(10) == 27)
         {
-            cout << "Esc key is pressed by user. Stoppig the video" << endl;
+            destroyAllWindows();
+            cout << "Esc key is pressed by user. Stopping the video" << endl;
             break;
         }
     }

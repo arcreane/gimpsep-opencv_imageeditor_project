@@ -3,7 +3,7 @@
 using namespace std;
 using namespace cv;
 
-// For DEMO: C:/Users/amand/Downloads/A2/MediaApp/images/HappyFish.jpg or van_gogh.jpg...
+// For DEMO: C:/Users/amand/Downloads/A2/MediaApp/medias/HappyFish.jpg or van_gogh.jpg...
 
 int main(int argc, char** argv)
 {

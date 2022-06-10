@@ -6,8 +6,13 @@ using namespace std;
 
 int dilate_erode_vid(int argc, char** argv)
 {
+    // Input and read source video 
+    string path;
+    cout << "Enter video path" << endl;
+    cin >> path;
+
     // Open the video file for reading
-    VideoCapture cap("C:/Users/amand/Downloads/A2/MediaApp/AmandaDieuaide-TP3/chaplin.mp4");
+    VideoCapture cap(path);
 
     // If not success, exit program
     if (!cap.isOpened()) {
@@ -57,6 +62,7 @@ int dilate_erode_vid(int argc, char** argv)
         // If any key is not pressed withing 10 ms, continue the loop
         if (waitKey(10) == 27)
         {
+            destroyAllWindows();
             cout << "Esc key is pressed by user. Stoppig the video" << endl;
             break;
         }
